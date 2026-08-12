@@ -14,7 +14,7 @@ Gross Margin %	32.2% → 27.6%	Margin compressing despite growth
 
 Return Rate	3.15% → 1.69%	Operational improvement, but not enough to offset margin loss
 
-Dashboard Structure : 
+##Dashboard Structure : 
 
 The report is built as a 3-page drill path, from executive summary down to transaction-level detail.
 
