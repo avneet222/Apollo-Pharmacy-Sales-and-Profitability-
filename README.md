@@ -2,7 +2,7 @@
 
 An end-to-end Power BI project that diagnoses why an Apollo pharmacy chain is growing revenue but losing gross margin — built as a 3-page executive-to-operational drill path: Sales Overview → Diagnostic Root Cause Analysis → Store & Product Drillthrough.
 
-#Business Problem : 
+# Business Problem : 
 
 Leadership sees healthy top-line growth but shrinking profitability, and needs to know where the money is leaking — across discounts, returns, COGS, stores, products, channels, and customer segments.
 
@@ -14,7 +14,7 @@ Gross Margin %	32.2% → 27.6%	Margin compressing despite growth
 
 Return Rate	3.15% → 1.69%	Operational improvement, but not enough to offset margin loss
 
-#Dashboard Structure : 
+# Dashboard Structure : 
 
 The report is built as a 3-page drill path, from executive summary down to transaction-level detail.
 
@@ -42,32 +42,13 @@ Business questions answered: Which specific stores, products, and transactions a
 
 <img width="635" height="326" alt="Screenshot 2026-08-12 162745" src="https://github.com/user-attachments/assets/d8557b49-fd98-47f2-99d6-ce8e0d5dfa71" />
 
-#KPI Logic
+# KPI Logic
 
 All measures follow a single revenue waterfall — no black-box DAX, every number traces back to this chain:
 
-Gross Sales
-  − Discount        → Net Sales
-  − Returns          → Realized Revenue
-  − COGS             → Gross Margin
-  
-Term	Definition	Calculation
-Gross Sales	Total sales value before discount, return, or cost impact	Quantity × Unit Selling Price
-Discount	Price reduction from campaign, channel offer, loyalty, or store promotion	Gross Sales × Discount %
-Net Sales	Billed value after discount, before returns	Gross Sales − Discount Amount
-Return Amount	Revenue reversal from cancelled, damaged, expired, or customer-returned products	Returned Qty × Unit Selling Price
-Realized Revenue	Final revenue retained after discount and return impact	Net Sales − Return Amount
-COGS	Purchase/inventory cost of products sold	Quantity Sold × Unit Cost
-Gross Margin	Profit left after product cost	Realized Revenue − COGS
-GM %	Profitability ratio	Gross Margin ÷ Realized Revenue
-AOV	Average order value	Realized Revenue ÷ Orders
-Orders	Distinct customer transactions	Distinct Transaction IDs
-Return Rate %	Share of net sales lost to returns	Return Amount ÷ Net Sales
-Stockout Rate %	Share of product lines with zero stock	Stockout Lines ÷ Total Lines
-Low Stock Rate %	Share of products below reorder level	Low Stock Lines ÷ Total Lines
-Avg SLA	Average fulfillment time	Total Fulfillment Minutes ÷ Orders
+<img width="689" height="243" alt="Screenshot 2026-08-12 174541" src="https://github.com/user-attachments/assets/0ba457fa-84ef-4426-978b-98924d546400" />
 
-#Key Insights
+# Key Insights
 
 Discount leakage (₹220.85K) is the larger of the two margin drains, more than 10x the return leakage (₹18.75K) — the root-cause tree traces most of it to Walk-in and Home Delivery channels paid via UPI and Wallet.
 
@@ -81,7 +62,7 @@ Revenue peaks sharply on weekend evenings (Fri–Sat, 19:00–21:00), useful for
 
 Walk-in remains the dominant channel by revenue (₹0.55M), but App and Home Delivery show margin dynamics worth monitoring at the channel level.
 
-#Data Model
+# Data Model
 
 Built on a star schema:
 
@@ -90,25 +71,40 @@ Dimension tables: Date, State/City, Store, Product/Category, Sales Channel, Paym
 
 Relationships and KPI measures (Realized Revenue, Gross Margin, GM %, discount/return leakage) are built entirely in DAX on top of this model — no pre-aggregated source data.
 
-#Tools & Techniques
+# Tools & Techniques
 
 Power BI Desktop — data modeling (star schema), DAX measures, Power Query transformations
+
 DAX — waterfall/bridge logic, decomposition tree, Pareto with cumulative %, drillthrough filtering
+
 Visuals used — KPI cards, combo trend chart, bridge/waterfall, decomposition tree, heatmap matrix, Pareto chart, shape map (India states), drillthrough table with data bars
+
 Repository Contents
+
 ├── README.md
+
 ├── screenshots/
+
 │   ├── 01_sales_overview.png
+
 │   ├── 02_diagnostic_root_cause.png
+
 │   └── 03_store_product_drillthrough.png
+
 ├── Apollo_Sales_Dashboard.pbix        (Power BI report file)
+
 └── data/                              (source/synthetic dataset, if shared)
+
 How to Use
+
 Clone the repo and open Apollo_Sales_Dashboard.pbix in Power BI Desktop.
+
 Use the date range slider and State/Category slicers on Page 1 to filter the whole report.
+
 Right-click any row on Page 1 or Page 2 and select Drillthrough → Store & Product Drillthrough to jump to transaction-level detail; use Reset Drill to return.
+
 Hover any KPI card or chart element for tooltips with MoM/context detail.
 
-#About This Project
+# About This Project
 
 Built as a portfolio project to demonstrate diagnostic (not just descriptive) BI: starting from a single business question — why is margin dropping while revenue grows — and building the data model, KPI logic, and report navigation to answer it end to end.
