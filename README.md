@@ -2,7 +2,7 @@
 
 An end-to-end Power BI project that diagnoses why an Apollo pharmacy chain is growing revenue but losing gross margin — built as a 3-page executive-to-operational drill path: Sales Overview → Diagnostic Root Cause Analysis → Store & Product Drillthrough.
 
-# Business Problem : 
+# Business Problem 
 
 Leadership sees healthy top-line growth but shrinking profitability, and needs to know where the money is leaking — across discounts, returns, COGS, stores, products, channels, and customer segments.
 
@@ -14,7 +14,7 @@ Gross Margin %	32.2% → 27.6%	Margin compressing despite growth
 
 Return Rate	3.15% → 1.69%	Operational improvement, but not enough to offset margin loss
 
-# Dashboard Structure : 
+# Dashboard Structure 
 
 The report is built as a 3-page drill path, from executive summary down to transaction-level detail.
 
