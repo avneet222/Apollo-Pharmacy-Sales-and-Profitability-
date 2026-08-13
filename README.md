@@ -69,6 +69,8 @@ Built on a star schema:
 Fact table: transaction-level sales (quantity, unit price, discount %, return flag, cost)
 Dimension tables: Date, State/City, Store, Product/Category, Sales Channel, Payment Mode, Campaign
 
+<img width="566" height="325" alt="Screenshot 2026-08-13 171547" src="https://github.com/user-attachments/assets/6288859f-4d6c-4454-b928-6a8b8e2f438f" />
+
 Relationships and KPI measures (Realized Revenue, Gross Margin, GM %, discount/return leakage) are built entirely in DAX on top of this model — no pre-aggregated source data.
 
 # Tools & Techniques
