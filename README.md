@@ -50,23 +50,24 @@ All measures follow a single revenue waterfall — no black-box DAX, every numbe
 
 # Key Insights
 
-Discount leakage (₹220.85K) is the larger of the two margin drains, more than 10x the return leakage (₹18.75K) — the root-cause tree traces most of it to Walk-in and Home Delivery channels paid via UPI and Wallet.
+-> Discount leakage (₹220.85K) is the larger of the two margin drains, more than 10x the return leakage (₹18.75K) — the root-cause tree traces most of it to Walk-in and Home Delivery channels paid via UPI and Wallet.
 
-598 transactions carried a "high discount" flag, averaging ₹68.87 discount per transaction — concentrated in specific campaign types rather than spread evenly.
+-> 598 transactions carried a "high discount" flag, averaging ₹68.87 discount per transaction — concentrated in specific campaign types rather than spread evenly.
 
-Diabetic Nutrition and Anti-Hypertensive/Anti-Diabetic categories carry the highest margin-at-risk (₹525K, ₹246K, ₹244K respectively), making them the priority for pricing/discount policy review.
+-> Diabetic Nutrition and Anti-Hypertensive/Anti-Diabetic categories carry the highest margin-at-risk (₹525K, ₹246K, ₹244K respectively), making them the priority for pricing/discount policy review.
 
-"Prescription Changed" and "Damaged Pack" account for ~60% of cumulative return value, pointing to a fulfillment/inventory-quality issue rather than a pricing one.
+-> "Prescription Changed" and "Damaged Pack" account for ~60% of cumulative return value, pointing to a fulfillment/inventory-quality issue rather than a pricing one.
 
-Revenue peaks sharply on weekend evenings (Fri–Sat, 19:00–21:00), useful for staffing and campaign timing decisions.
+-> Revenue peaks sharply on weekend evenings (Fri–Sat, 19:00–21:00), useful for staffing and campaign timing decisions.
 
-Walk-in remains the dominant channel by revenue (₹0.55M), but App and Home Delivery show margin dynamics worth monitoring at the channel level.
+-> Walk-in remains the dominant channel by revenue (₹0.55M), but App and Home Delivery show margin dynamics worth monitoring at the channel level.
 
 # Data Model
 
 Built on a star schema:
 
 Fact table: transaction-level sales (quantity, unit price, discount %, return flag, cost)
+
 Dimension tables: Date, State/City, Store, Product/Category, Sales Channel, Payment Mode, Campaign
 
 <img width="566" height="325" alt="Screenshot 2026-08-13 171547" src="https://github.com/user-attachments/assets/6288859f-4d6c-4454-b928-6a8b8e2f438f" />
@@ -75,13 +76,13 @@ Relationships and KPI measures (Realized Revenue, Gross Margin, GM %, discount/r
 
 # Tools & Techniques
 
-Power BI Desktop — data modeling (star schema), DAX measures, Power Query transformations
+-> Power BI Desktop — data modeling (star schema), DAX measures, Power Query transformations
 
-DAX — waterfall/bridge logic, decomposition tree, Pareto with cumulative %, drillthrough filtering
+-> DAX — waterfall/bridge logic, decomposition tree, Pareto with cumulative %, drillthrough filtering
 
-Visuals used — KPI cards, combo trend chart, bridge/waterfall, decomposition tree, heatmap matrix, Pareto chart, shape map (India states), drillthrough table with data bars
+-> Visuals used — KPI cards, combo trend chart, bridge/waterfall, decomposition tree, heatmap matrix, Pareto chart, shape map (India states), drillthrough table with data bars
 
-Repository Contents
+# Repository Contents
 
 ├── README.md
 
@@ -97,15 +98,15 @@ Repository Contents
 
 └── data/                              (source/synthetic dataset, if shared)
 
-How to Use
+# How to Use
 
-Clone the repo and open Apollo_Sales_Dashboard.pbix in Power BI Desktop.
+1. Clone the repo and open Apollo_Sales_Dashboard.pbix in Power BI Desktop.
 
-Use the date range slider and State/Category slicers on Page 1 to filter the whole report.
+2. Use the date range slider and State/Category slicers on Page 1 to filter the whole report.
 
-Right-click any row on Page 1 or Page 2 and select Drillthrough → Store & Product Drillthrough to jump to transaction-level detail; use Reset Drill to return.
+3. Right-click any row on Page 1 or Page 2 and select Drillthrough → Store & Product Drillthrough to jump to transaction-level detail; use Reset Drill to return.
 
-Hover any KPI card or chart element for tooltips with MoM/context detail.
+4. Hover any KPI card or chart element for tooltips with MoM/context detail.
 
 # About This Project
 
