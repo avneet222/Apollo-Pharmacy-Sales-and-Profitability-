@@ -46,7 +46,7 @@ Business questions answered: Which specific stores, products, and transactions a
 
 All measures follow a single revenue waterfall — no black-box DAX, every number traces back to this chain:
 
-<img width="689" height="243" alt="Screenshot 2026-08-12 174541" src="https://github.com/user-attachments/assets/0ba457fa-84ef-4426-978b-98924d546400" />
+<img width="1391" height="489" alt="Screenshot 2026-08-15 162957" src="https://github.com/user-attachments/assets/92022d3b-8b87-4cb9-97c6-a68dd0485d05" />
 
 # Key Insights
 
